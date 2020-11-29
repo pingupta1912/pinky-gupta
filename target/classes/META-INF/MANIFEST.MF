@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: products
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: vivek
+Implementation-Vendor-Id: com.target.products
+Build-Jdk: 1.8.0_275
+Implementation-URL: http://projects.spring.io/spring-boot/products/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
