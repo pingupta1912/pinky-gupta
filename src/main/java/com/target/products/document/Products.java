@@ -12,10 +12,10 @@ public class Products {
     @Id
     @NotEmpty
     private String id;
-    
+
     @NotEmpty
     private String name;
-    
+
     @NotNull
     private Price price;
 
@@ -58,5 +58,4 @@ public class Products {
     public String getName() {
         return name;
     }
-
 }

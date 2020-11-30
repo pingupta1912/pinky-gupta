@@ -8,10 +8,10 @@ public class Price {
 
 	@NotNull
 	private Float cost;
-	
+
 	@NotEmpty
 	private String currency;
-	
+
 	public Price() {
 		super();
 	}
@@ -32,6 +32,5 @@ public class Price {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	
-	
+
 }

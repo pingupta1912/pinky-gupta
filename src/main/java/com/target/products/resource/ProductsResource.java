@@ -21,6 +21,7 @@ import com.target.products.repository.ProductRepository;
 public class ProductsResource {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductsResource.class);
+	private static final String PRODUCT_UPDATED_SUCCESSFULLY = "Product is updated successfully";
 
 	private ProductRepository productRepository;
 
@@ -29,17 +30,26 @@ public class ProductsResource {
 	}
 
 	@GetMapping("{id}")
-	public Products getBy(@PathVariable("id") String id) {
+	public ResponseEntity<Products> getBy(@PathVariable("id") String id) {
 		logger.info("Fetching product by id " + id);
-		return productRepository.findOne(id);
+		if (productRepository.findOne(id) == null)
+		{
+			logger.error("product not found for given id " + id);
+			throw new ProductNotfoundException();
+		}
+		return new ResponseEntity<>(productRepository.findOne(id), HttpStatus.OK);
 	}
 
 	@PutMapping("{id}")
 	public ResponseEntity<Object> updateUser(@PathVariable("id") String id,
 											 @RequestBody Products product) {
 		logger.info("Updating product by id " + id);
-		if (productRepository.findOne(id).getId().isEmpty()) throw new ProductNotfoundException();
+		if (productRepository.findOne(id) == null)
+		{
+			logger.error("product not found for given id " + id);
+			throw new ProductNotfoundException();
+		}
 		productRepository.save(product);
-		return new ResponseEntity<>("Product is updated successfully", HttpStatus.OK);
+		return new ResponseEntity<>(PRODUCT_UPDATED_SUCCESSFULLY, HttpStatus.OK);
 	}
 }

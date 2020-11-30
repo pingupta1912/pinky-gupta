@@ -18,7 +18,7 @@ public class MongoDBConfig {
     CommandLineRunner commandLineRunner(ProductRepository productRepository) {
         return strings -> {
             productRepository.save(new Products("1", "Peter", new Price(2.5f, "$")));
-            productRepository.save(new Products("2", "Sam", new Price(2.5f, "$")));
+            productRepository.save(new Products("2", "Sam", new Price(3.5f, "$")));
         };
     }
 
